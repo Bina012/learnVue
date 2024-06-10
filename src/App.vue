@@ -6,14 +6,18 @@
 <LearnEvent />
 <TwoWayBinding />
 <ForLoop />
-<PassingDataToChild :msg=message :user="user" :data = "getData"/>
+<PassingDataToChild :msg=message :user="user" :data="getData" />
 <ul>
     <li v-for="item in users" :key="item.name">
-        <UserComponent :data = "item" :getName = "getName"/>
+        <UserComponent :data="item" :getName="getName" />
     </li>
 </ul>
-<HtmlBinding/>
-<CssBinding/>
+<HtmlBinding />
+<CssBinding />
+<PropsComponent :data="student" />
+<h3>{{ childUser }}</h3>
+<ChildToParentData :getUser="getUserName" />
+<RefComponent/>
 </template>
 
 <script>
@@ -27,6 +31,9 @@ import PassingDataToChild from './components/PassingDataToChild.vue';
 import UserComponent from './components/UserComponent.vue';
 import HtmlBinding from './components/HtmlBinding.vue';
 import CssBinding from './components/CssBinding.vue';
+import PropsComponent from './components/PropsComponent.vue';
+import ChildToParentData from './components/ChildToParentData.vue';
+import RefComponent from './components/RefComponent.vue';
 
 export default {
     name: 'App',
@@ -41,6 +48,9 @@ export default {
         UserComponent,
         HtmlBinding,
         CssBinding,
+        PropsComponent,
+        ChildToParentData,
+        RefComponent,
     },
     data() {
         return {
@@ -50,12 +60,25 @@ export default {
                 email: "bina@example.com"
             },
 
-            users : [
-                {name: "Bina", email: "bina@example"},
-                {name: "Bina1", email: "bina1@example"},
-                {name: "Bina2", email: "bina2@example"},
-                {name: "Bina3", email: "bina3@example"},
-            ]
+            users: [{
+                    name: "Bina",
+                    email: "bina@example"
+                },
+                {
+                    name: "Bina1",
+                    email: "bina1@example"
+                },
+                {
+                    name: "Bina2",
+                    email: "bina2@example"
+                },
+                {
+                    name: "Bina3",
+                    email: "bina3@example"
+                },
+            ],
+            student: "Ram",
+            childUser : "",
 
         }
 
@@ -64,8 +87,11 @@ export default {
         getData() {
             alert("I am here");
         },
-        getName(name){
+        getName(name) {
             alert(name)
+        },
+        getUserName(name) {
+           this.childUser = name;
         }
     }
 }
