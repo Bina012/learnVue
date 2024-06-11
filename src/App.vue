@@ -18,6 +18,7 @@
 <h3>{{ childUser }}</h3>
 <ChildToParentData :getUser="getUserName" />
 <RefComponent/>
+<FormSubmission/>
 </template>
 
 <script>
@@ -34,6 +35,7 @@ import CssBinding from './components/CssBinding.vue';
 import PropsComponent from './components/PropsComponent.vue';
 import ChildToParentData from './components/ChildToParentData.vue';
 import RefComponent from './components/RefComponent.vue';
+import FormSubmission from './components/FormSubmission.vue';
 
 export default {
     name: 'App',
@@ -51,6 +53,7 @@ export default {
         PropsComponent,
         ChildToParentData,
         RefComponent,
+        FormSubmission,
     },
     data() {
         return {
